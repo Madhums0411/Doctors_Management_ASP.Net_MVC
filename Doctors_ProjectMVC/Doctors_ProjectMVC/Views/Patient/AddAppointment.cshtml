@@ -1,0 +1,70 @@
+﻿@model CommonLayer.Model.ApModel
+@using Microsoft.AspNetCore.Http
+@{
+    ViewData["Title"] = "AddAppointment";
+}
+
+<h1>AddAppointment</h1>
+
+<h4>ApModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddAppointment">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+@*            <div class="form-group">
+                <label asp-for="Ap_id" class="control-label"></label>
+                <input asp-for="Ap_id" class="form-control"  />
+                <span asp-validation-for="Ap_id" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Patient_id" class="control-label"></label>
+                <input asp-for="Patient_id" class="form-control" value=@Context.Session.GetInt32("Patient_id") readonly/>
+                <span asp-validation-for="Patient_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="P_Name" class="control-label"></label>
+                <input asp-for="P_Name" class="form-control" />
+                <span asp-validation-for="P_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ap_Date" class="control-label"></label>
+                <input asp-for="Ap_Date" class="form-control" />
+                <span asp-validation-for="Ap_Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TimeSlotStart" class="control-label"></label>
+                <input asp-for="TimeSlotStart" class="form-control" />
+                <span asp-validation-for="TimeSlotStart" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TimeSlotEnd" class="control-label"></label>
+                <input asp-for="TimeSlotEnd" class="form-control" />
+                <span asp-validation-for="TimeSlotEnd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Purpose" class="control-label"></label>
+                <input asp-for="Purpose" class="form-control" />
+                <span asp-validation-for="Purpose" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doctor_id" class="control-label"></label>
+                <input asp-for="Doctor_id" class="form-control" value=@Context.Session.GetInt32("Doctor_id")/>
+                <span asp-validation-for="Doctor_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="D_Name" class="control-label"></label>
+                <input asp-for="D_Name" class="form-control"  value=@Context.Session.GetString("D_Name") />
+                <span asp-validation-for="D_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -1,0 +1,98 @@
+﻿@model IEnumerable<CommonLayer.Model.PatientModel>
+
+@{
+    ViewData["Title"] = "GetPatients";
+}
+
+@*<h1>GetPatients</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+<h4 class="header">Welcome to Health Care Hospital</h4>
+
+<h5 class="header">All Patients Details</h5>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Patient_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Profile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date_of_birth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Blood_group)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medical_history)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone_number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+@*            <th>
+                @Html.DisplayNameFor(model => model.Trash)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Profile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date_of_birth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Blood_group)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medical_history)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone_number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+@*            <td>
+                @Html.DisplayFor(modelItem => item.Trash)
+            </td>*@
+@*            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>*@
+        </tr>
+}
+    </tbody>
+</table>

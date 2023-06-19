@@ -1,0 +1,87 @@
+﻿@model CommonLayer.Model.PatientModel
+@using Microsoft.AspNetCore.Http
+
+@{
+    ViewData["Title"] = "AddPatient";
+}
+@*
+<h1>AddPatient</h1>
+
+<h4>PatientModel</h4>
+<hr />*@
+<h4 class="header">Welcome to Health Care Hospital</h4>
+
+<h5 class="header">Add Patient Details</h5>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddPatient">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                @*<label asp-for="UserID" class="control-label"></label>*@
+                <input asp-for="UserID" type="hidden" class="form-control" value=@Context.Session.GetInt32("UserID") readonly />
+                <span asp-validation-for="UserID" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="Patient_id" class="control-label"></label>
+                <input asp-for="Patient_id" class="form-control" />
+                <span asp-validation-for="Patient_id" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Profile" class="control-label"></label>
+                <input asp-for="Profile" class="form-control" />
+                <span asp-validation-for="Profile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date_of_birth" class="control-label"></label>
+                <input asp-for="Date_of_birth" class="form-control" />
+                <span asp-validation-for="Date_of_birth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <input asp-for="Gender" class="form-control" />
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Blood_group" class="control-label"></label>
+                <input asp-for="Blood_group" class="form-control" />
+                <span asp-validation-for="Blood_group" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Medical_history" class="control-label"></label>
+                <input asp-for="Medical_history" class="form-control" />
+                <span asp-validation-for="Medical_history" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone_number" class="control-label"></label>
+                <input asp-for="Phone_number" class="form-control" />
+                <span asp-validation-for="Phone_number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Trash" class="control-label"></label>
+                <input asp-for="Trash" class="form-control" />
+                <span asp-validation-for="Trash" class="text-danger"></span>
+            </div>
+            <div class="button">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

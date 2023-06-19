@@ -1,0 +1,109 @@
+﻿@model CommonLayer.Model.DoctorModel
+@using Microsoft.AspNetCore.Http
+@{
+    ViewData["Title"] = "Doctor Details";
+}
+<h4 class="header">Welcome to Health Care Hospital</h4>
+
+<h5 class="header">Doctor Details</h5>
+
+<div>
+@*    <div>
+        Name:@ViewBag.Doctor.Name
+    </div>
+  
+        @{
+            var doctor = ViewData["Doctor"] as CommonLayer.Model.DoctorModel;
+        }
+    <div>
+        @doctor.Name
+    </div>
+
+    <div>
+*@
+@*    <h4>DoctorModel</h4>
+    <hr />*@
+    <dl class="row">
+      @*  <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UserID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserID)
+        </dd>*@
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Doctor_id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Doctor_id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Profile)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Profile)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Qualification)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Qualification)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Job_specification)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Job_specification)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Experience_year)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Experience_year)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Contact_number)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Contact_number)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Doctor_fee)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Doctor_fee)
+        </dd>
+@*        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Trash)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Trash)
+        </dd>*@
+    </dl>
+</div>
+</div>
+<div>
+
+    @Html.ActionLink("Edit", "Edit", new { UserID = Model.UserID }) |
+   @* @Html.ActionLink("AddAppointment", "Add Appointment", new { Doctor_id = Model.Doctor_id })*@
+
+    <a  asp-area="" asp-controller="Patient" asp-action="AddAppointment">Add Appointment</a>
+    <a asp-action="Index">Back to List</a>
+</div>

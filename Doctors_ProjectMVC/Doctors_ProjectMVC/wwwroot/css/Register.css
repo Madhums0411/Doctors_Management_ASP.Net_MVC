@@ -1,0 +1,63 @@
+﻿.row{
+    display:flex;
+    justify-content:center;
+    align-content:center;
+    width:80vw;
+    /*height:90vh;*/
+/*    border:1px solid gray;*/
+    /*background-color:blueviolet;*/
+}
+.col-md-4{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+    align-content:stretch;
+
+}
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+.radiobutton{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-evenly;
+    
+}
+.button{
+    display:flex;
+    flex-direction:column;
+    justify-content:stretch;
+    align-items:stretch;
+}
+/*.div{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;*/
+/*    align-content:center;*/
+/*}*/
+
+/*.table{
+    border-color:brown;
+}*/
+.dmain {
+    display: flex;
+    /* justify-content: center;*/
+    flex-direction: column;
+  /*  width: 100vw;
+    height: 75vh;*/
+
+/*    background-image: url(../image.png);*/
+}
+
+.Backimg {
+
+    
+}
+.Plinks {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: stretch;
+}
