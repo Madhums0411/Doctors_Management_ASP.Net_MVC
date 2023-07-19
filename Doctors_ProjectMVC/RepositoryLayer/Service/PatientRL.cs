@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text;
+using System.Xml.Linq;
 
 namespace RepositoryLayer.Service
 {
@@ -244,6 +245,79 @@ namespace RepositoryLayer.Service
                 }
 
 
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public ApModel GetAppointmentById(int? Patient_id)
+        {
+            try
+            {
+                ApModel model = new ApModel();
+                this.sqlConnection = new SqlConnection(this.configuration["ConnectionStrings:Doctors_DB"]);
+                SqlCommand cmd = new SqlCommand("SP_AP_GetAp_ByID", this.sqlConnection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("Patient_id", Patient_id);
+                this.sqlConnection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if(reader.HasRows)
+                {
+                    while(reader.Read())
+                    {
+                        model.Ap_id = Convert.ToInt32(reader["Ap_id"]);
+                        model.Patient_id = Convert.ToInt32(reader["Patient_id"]);
+                        model.P_Name = Convert.ToString(reader["P_Name"]);
+                        model.Ap_Date = reader.GetDateTime(3);
+                        model.TimeSlotStart = reader.GetTimeSpan(4);
+                        model.TimeSlotEnd = reader.GetTimeSpan(5);
+                        model.Purpose = Convert.ToString(reader["Purpose"]);
+                        model.Doctor_id = Convert.ToInt32(reader["Doctor_id"]);
+                        model.D_Name = Convert.ToString(reader["D_Name"]);
+                    }
+                    this.sqlConnection.Close();
+                    return model;
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public ApModel EditAppointment(ApModel apModel)
+        {
+            try
+            {
+                this.sqlConnection = new SqlConnection(this.configuration["ConnectionStrings:Doctors_DB"]);
+                SqlCommand cmd = new SqlCommand("SP_AP_Edit", this.sqlConnection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("Patient_id", apModel.Patient_id);
+                cmd.Parameters.AddWithValue("P_Name", apModel.P_Name);
+                cmd.Parameters.AddWithValue("Ap_Date", apModel.Ap_Date);
+                cmd.Parameters.AddWithValue("TimeSlotStart", apModel.TimeSlotStart);
+                cmd.Parameters.AddWithValue("TimeSlotEnd", apModel.TimeSlotEnd);
+                cmd.Parameters.AddWithValue("Purpose", apModel.Purpose);
+                cmd.Parameters.AddWithValue("Doctor_id",apModel.Doctor_id);
+                cmd.Parameters.AddWithValue("D_Name", apModel.D_Name);
+                this.sqlConnection.Open();
+                var result = cmd.ExecuteNonQuery();
+                this.sqlConnection.Close();
+                if (result != 0)
+                {
+                    return apModel;
+                }
+                else
+                {
+                    return null;
+                }
             }
             catch (Exception)
             {

@@ -14,27 +14,37 @@
 <body >
     <div >
 
-   
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-@*                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+
+        <nav class=" navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="navbar">
+                    <div class="navbarone">
+                        <a class="nav-link card-text text-uppercase font-weight-bold ">Health Care Hospital</a>
+                    </div>
+                    <div class="navbartwo">
+                        <a class="nav-link text-secondary text-uppercase " asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-link text-secondary text-uppercase " asp-area="" asp-controller="Patient" asp-action="Patient">Patients</a>
+                        <a class="nav-link text-secondary text-uppercase " asp-area="" asp-controller="Doctor" asp-action="Doctor">Doctors</a>
+                        <a class="nav-link text-secondary text-uppercase ">About</a>
+                        <a class="nav-link text-secondary text-uppercase ">Contact Us</a>
+                        @*                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button*@
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
+                        <span class="navbar-toggler-icon"></span> <a class="nav-link text-dark" asp-area="" asp-controller="Doctor" asp-action="Doctor">Doctors</a>
+                        </button*@
+                        @*                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Doctor" asp-action="Doctor">Doctors</a>
+
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Patient" asp-action="Patient">Patients</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Patient" asp-action="Patient">Patients</a>
                         </li>
-                            
-                    </ul>
-                </div>
+
+                        </ul>
+                        </div>*@
+                    </div>
             </div>
+
           
         </nav>
 

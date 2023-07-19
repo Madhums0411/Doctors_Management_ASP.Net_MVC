@@ -10,11 +10,16 @@
     <div class="header">
         <h3>Welcome to Health Care Hospital</h3>
     </div>
+    <br />
     <div class="Plinks">
-        <a asp-area="" asp-controller="User" asp-action="Getall">All User Details</a>
-        <a asp-area="" asp-controller="Patient" asp-action="GetPatients">All Patient Details</a>
+  
+        <button class="btn btn-primary" onclick="location.href='@Url.Action("Getall", "User")'">User Details</button>
+        <button class="btn btn-primary" onclick="location.href='@Url.Action("GetPatients", "Patient")'">Patient Details</button>
+        <button class="btn btn-primary" onclick="location.href='@Url.Action("GetDoctors", "Doctor")'">Doctor Details</button>
+        <button class="btn btn-primary" onclick="location.href='@Url.Action("GetAllAppointments", "Patient")'">Appointment Details</button>
+@*        <a asp-area="" asp-controller="Patient" asp-action="GetPatients">All Patient Details</a>
         <a asp-area="" asp-controller="Doctor" asp-action="GetDoctors">All Doctors Details</a>
-        <a asp-area="" asp-controller="Patient" asp-action="GetAllAppointments">All Appointment Details</a>
+        <a asp-area="" asp-controller="Patient" asp-action="GetAllAppointments">All Appointment Details</a>*@
        
     </div>
 

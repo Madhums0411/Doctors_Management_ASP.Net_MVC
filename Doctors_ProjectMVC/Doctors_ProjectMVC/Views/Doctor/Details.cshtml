@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Doctor Details";
 }
-<h4 class="header">Welcome to Health Care Hospital</h4>
+@*<h4 class="header">Welcome to Health Care Hospital</h4>*@
 
 <h5 class="header">Doctor Details</h5>
 
@@ -98,12 +98,11 @@
         </dd>*@
     </dl>
 </div>
-</div>
+
 <div>
 
     @Html.ActionLink("Edit", "Edit", new { UserID = Model.UserID }) |
-   @* @Html.ActionLink("AddAppointment", "Add Appointment", new { Doctor_id = Model.Doctor_id })*@
-
-    <a  asp-area="" asp-controller="Patient" asp-action="AddAppointment">Add Appointment</a>
-    <a asp-action="Index">Back to List</a>
+    <a asp-area="" asp-controller="Patient" asp-action="AddAppointment">Take Appointment</a>
+   @* @Html.ActionLink("AddAppointment", "Add Appointment", new { Doctor_id = Model.Doctor_id })*@ 
+@*    <a asp-action="Index">Back to List</a>*@
 </div>

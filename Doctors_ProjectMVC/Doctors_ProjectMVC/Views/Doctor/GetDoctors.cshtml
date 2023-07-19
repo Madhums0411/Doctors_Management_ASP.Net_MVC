@@ -9,7 +9,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>*@
-<h4 class="header">Welcome to Health Care Hospital</h4>
+@*<h4 class="header">Welcome to Health Care Hospital</h4>*@
 
 <h5 class="header">All Doctors Details</h5>
 <table class="table">
@@ -96,7 +96,7 @@
            <td>
                     @*<button type="button"  asp-area="" asp-controller="Patient" asp-action="AddAppointment">Add Appointment</button>*@
 @*                    @Html.ActionLink("Add Appointment", "AddAppointment", new { /* id=item.PrimaryKey */ }) *@
-                @Html.ActionLink("Doctor Details", "Details", new { UserID=item.UserID }) |
+                @Html.ActionLink("Details", "Details", new { UserID=item.UserID }) 
 
 @*                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
             </td>

@@ -61,3 +61,15 @@
     justify-content: space-evenly;
     align-items: stretch;
 }
+.navbartwo{
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-end;
+   
+}
+.navbarone {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  
+}

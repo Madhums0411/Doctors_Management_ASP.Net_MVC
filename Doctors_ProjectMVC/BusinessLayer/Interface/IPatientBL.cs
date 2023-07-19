@@ -13,5 +13,7 @@ namespace BusinessLayer.Interface
         public PatientModel EditPatientDetails(PatientModel patientModel);
         public ApModel AppointmentCreate(int? Patient_id, int? Doctor_id, string D_Name, ApModel apModel);
         public IEnumerable<ApModel> GetAllAppointments();
+        public ApModel GetAppointmentById(int? Patient_id);
+        public ApModel EditAppointment(ApModel apModel);
     }
 }

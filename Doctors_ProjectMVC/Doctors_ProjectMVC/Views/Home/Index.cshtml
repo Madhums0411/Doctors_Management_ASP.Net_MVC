@@ -7,9 +7,9 @@
         <h3 >Welcome to Health Care Hospital</h3>
     </div>
     <div class="Plinks">
-        <a asp-area="" asp-controller="User" asp-action="Register">Register</a>
+        <button class="btn btn-primary" onclick="location.href='@Url.Action("Register", "User")'">Register</button>
 
-        <a asp-area="" asp-controller="User" asp-action="Login">Login</a>
+        <button class="btn btn-primary" onclick="location.href='@Url.Action("Login", "User")'">Login</button>
     </div>
 
 

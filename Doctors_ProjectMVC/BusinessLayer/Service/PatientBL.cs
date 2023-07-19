@@ -87,5 +87,29 @@ namespace BusinessLayer.Service
                 throw;
             }
         }
+        public ApModel GetAppointmentById(int? Patient_id)
+        {
+            try
+            {
+                return this.patientRL.GetAppointmentById(Patient_id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public ApModel EditAppointment(ApModel apModel)
+        {
+            try
+            {
+                return this.patientRL.EditAppointment(apModel);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

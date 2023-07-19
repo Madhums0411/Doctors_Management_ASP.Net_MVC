@@ -10,7 +10,7 @@
 <hr />*@
 <div class="row">
     <div class="col-md-4">
-        <h4>Welcome to Health Care Hospital</h4>
+       @* <h4>Welcome to Health Care Hospital</h4>*@
 
         <h5 class="header">Login Here</h5>
         <form asp-action="Login">
@@ -65,9 +65,9 @@
     </div>
 </div>
 
-<div>
+@*<div>
     <a asp-action="Index">Back to List</a>
-</div>
+</div>*@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

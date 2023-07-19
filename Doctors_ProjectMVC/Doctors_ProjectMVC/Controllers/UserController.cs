@@ -23,13 +23,13 @@ namespace Doctors_ProjectMVC.Controllers
         }
 
         [HttpGet]
+        [Route("User/NewUser")]
         public IActionResult Register()
         {
             return View();
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult Register([Bind] UserModel user)
         {
             if (ModelState.IsValid)
@@ -40,6 +40,7 @@ namespace Doctors_ProjectMVC.Controllers
             return View(user);
         }
         [HttpGet]
+        [Route("User/Login")]
         public IActionResult Login()
         {
             return View();
@@ -80,6 +81,7 @@ namespace Doctors_ProjectMVC.Controllers
             return View();
         }
         [HttpGet]
+        [Route("User/AllUser")]
         public IActionResult Getall()
         {
             List<GetUser> users = new List<GetUser>();
@@ -88,6 +90,7 @@ namespace Doctors_ProjectMVC.Controllers
         }
 
         [HttpGet]
+        [Route("User/Details")]
         public IActionResult Details(int? UserID)
         {
             if (UserID == null)
@@ -104,6 +107,7 @@ namespace Doctors_ProjectMVC.Controllers
         }
 
         [HttpGet]
+        [Route("User/Update")]
         public IActionResult Edit(int? UserID)
         {
             if (UserID == null)
@@ -118,7 +122,6 @@ namespace Doctors_ProjectMVC.Controllers
             return View(user);
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult Edit(int? UserID ,[Bind] GetUser user)
         {
             if (UserID != user.UserID)
@@ -132,6 +135,7 @@ namespace Doctors_ProjectMVC.Controllers
             }
             return View(user);
         }
+        [Route("User/Delete")]
         public IActionResult Delete(int? UserID)
         {
             if (UserID == null)
@@ -145,12 +149,11 @@ namespace Doctors_ProjectMVC.Controllers
             }
             return View(user);
         }
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        [HttpPost]
         public IActionResult DeleteConfirmed(int? UserID)
         {
                 userBL.DeleteUser(UserID);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Admin", "User");
             
         }
 

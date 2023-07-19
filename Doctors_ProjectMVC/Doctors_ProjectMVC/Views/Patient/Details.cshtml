@@ -4,7 +4,7 @@
     ViewData["Title"] = "Details";
 }
 
-<h4 class="header">Welcome to Health Care Hospital</h4>
+@*<h4 class="header">Welcome to Health Care Hospital</h4>*@
 
 <h5 class="header">Patient Details</h5>
 
@@ -82,6 +82,6 @@
 </div>
 <div>
     @Html.ActionLink("Edit", "Edit", new { UserID = Model.UserID  }) |
-    <a  asp-area="" asp-controller="Doctor" asp-action="GetDoctors">GetDoctors</a>
+    <a  asp-area="" asp-controller="Doctor" asp-action="GetDoctors">View Doctors</a>
 @*    <a asp-action="Index">Back to List</a>*@
 </div>

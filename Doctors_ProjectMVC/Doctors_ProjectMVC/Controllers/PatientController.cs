@@ -25,6 +25,7 @@ namespace Doctors_ProjectMVC.Controllers
             return View();
         }
         [HttpGet]
+        [Route("Patient/Profile")]
         public IActionResult AddPatient()
         {
 
@@ -33,11 +34,14 @@ namespace Doctors_ProjectMVC.Controllers
         } 
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        
         public IActionResult AddPatient(PatientModel patientModel)
         {
-   
-            if (ModelState.IsValid)
+
+            string Name = HttpContext.Session.GetString("Name");
+
+           
+                if (ModelState.IsValid)
                 {
                     int UserID = (int)HttpContext.Session.GetInt32("UserID");
                     var result = patientBL.AddPatientDetails(UserID, patientModel);
@@ -48,14 +52,14 @@ namespace Doctors_ProjectMVC.Controllers
                         return RedirectToAction("Details", "Patient");
                     }
 
-
                 }
-    
+          
 
             return View();
         }
 
         [HttpGet]
+        [Route("Patient/AllPatients")]
         public IActionResult GetPatients()
         {
             List<PatientModel> patientModel = new List<PatientModel>();
@@ -64,6 +68,7 @@ namespace Doctors_ProjectMVC.Controllers
         }
 
         [HttpGet]
+        [Route("Patient/Details")]
         public IActionResult Details(int? UserID)
         {
             UserID = (int)HttpContext.Session.GetInt32("UserID");
@@ -81,6 +86,7 @@ namespace Doctors_ProjectMVC.Controllers
             return View();
         }
         [HttpGet]
+        [Route("Patient/Update")]
         public IActionResult Edit(int? UserID)
         {
             if (UserID == null)
@@ -95,7 +101,6 @@ namespace Doctors_ProjectMVC.Controllers
             return View(patientModel);
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult Edit(int? UserID, [Bind] PatientModel patientModel)
         {
             if (UserID != patientModel.UserID)
@@ -110,13 +115,13 @@ namespace Doctors_ProjectMVC.Controllers
             return View(patientModel);
         }
         [HttpGet]
+        [Route("Patient/Appointment")]
         public IActionResult AddAppointment()
         {
             return View();
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult AddAppointment(ApModel apModel)
         {
             if (ModelState.IsValid)
@@ -124,18 +129,73 @@ namespace Doctors_ProjectMVC.Controllers
                 int Patient_id = (int)HttpContext.Session.GetInt32("Patient_id");
                 int Doctor_id = (int)HttpContext.Session.GetInt32("Doctor_id");
                 string D_Name = (string)HttpContext.Session.GetString("D_Name");
-                patientBL.AppointmentCreate(Patient_id, Doctor_id, D_Name, apModel);
-                return RedirectToAction("Patient", "Patient");
+                var result = patientBL.AppointmentCreate(Patient_id, Doctor_id, D_Name, apModel);
+                
+                if(result != null)
+                {
+                    
+                    return RedirectToAction("Patient", "Patient");
+                }
+                
 
             }
             return View();
         }
-        //[HttpGet]
-        //public IActionResult GetAllAppointments()
-        //{
-        //    List<ApModel> apModel = new List<ApModel>();
-        //    apModel = patientBL.GetAllAppointments().ToList();
-        //    return View(apModel);
-        //}
+        [HttpGet]
+        [Route("Patient/AllAppointments")]
+        public IActionResult GetAllAppointments()
+        {
+            List<ApModel> apModel = new List<ApModel>();
+            apModel = patientBL.GetAllAppointments().ToList();
+            return View(apModel);
+        }
+
+        [HttpGet]
+        [Route("Patient/AppointmentDetails")]
+        public IActionResult APDetailsByID(int? Patient_id)
+        {
+             Patient_id = (int)HttpContext.Session.GetInt32("Patient_id");
+
+            if (Patient_id == null)
+            {
+                return RedirectToAction("Patient", "Patient");
+            }
+            var result = patientBL.GetAppointmentById(Patient_id);
+            if (result != null)
+            {
+                
+                return View(result);
+            }
+            return View();
+        }
+        [HttpGet]
+        [Route("Patient/EditAppointment")]
+        public IActionResult APEdit(int? Patient_id)
+        {
+            if (Patient_id == null)
+            {
+                return NotFound();
+            }
+            ApModel apModel = patientBL.GetAppointmentById(Patient_id);
+            if (apModel == null)
+            {
+                return NotFound();
+            }
+            return View(apModel);
+        }
+        [HttpPost]
+        public IActionResult APEdit(int? Patient_id, [Bind] ApModel apModel)
+        {
+            if (Patient_id != apModel.Patient_id)
+            {
+                return NotFound();
+            }
+            if (ModelState.IsValid)
+            {
+                patientBL.EditAppointment(apModel);
+                return RedirectToAction("APDetailsByID", "Patient");
+            }
+            return View(apModel);
+        }
     }
 }

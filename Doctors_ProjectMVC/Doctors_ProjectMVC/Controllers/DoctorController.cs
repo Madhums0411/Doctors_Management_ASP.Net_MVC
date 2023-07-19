@@ -25,25 +25,28 @@ namespace Doctors_ProjectMVC.Controllers
         }
 
         [HttpGet]
+        [Route("Doctor/Profile")]
         public IActionResult AddDoctor()
         {
             return View();
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult AddDoctor( DoctorModel doctorModel)
         {
             if (ModelState.IsValid)
             {
                 int UserID = (int)HttpContext.Session.GetInt32("UserID");
                 doctorBL.AddDoctorDetails(UserID, doctorModel);
-                return RedirectToAction("Privacy", "Home");
+                int Doctor_id = (int)HttpContext.Session.GetInt32("Doctor_id");
+                return RedirectToAction("Details", "Doctor");
+
             }
             return View();
         }
 
         [HttpGet]
+        [Route("Doctor/AllDoctors")]
         public IActionResult GetDoctors()
         {
             List<DoctorModel> doctorModel = new List<DoctorModel>();
@@ -53,14 +56,15 @@ namespace Doctors_ProjectMVC.Controllers
         }
         
         [HttpGet]
-        public IActionResult Details(int? UserID)
+        [Route("Doctor/Details")]
+        public IActionResult Details(int? UserID, DoctorModel model)
         {
-             //UserID = (int)HttpContext.Session.GetInt32("UserID");
+             UserID = (int)HttpContext.Session.GetInt32("UserID");
             if (UserID == null)
             {
                 return NotFound();
             }
-            DoctorModel model = doctorBL.GetDoctorDetail(UserID);
+          model = doctorBL.GetDoctorDetail(UserID);
             if (model != null)
             {
 
@@ -73,6 +77,7 @@ namespace Doctors_ProjectMVC.Controllers
             return View();
         }
         [HttpGet]
+        [Route("Doctor/Update")]
         public IActionResult Edit(int? UserID)
         {
             if (UserID == null)
@@ -87,7 +92,6 @@ namespace Doctors_ProjectMVC.Controllers
             return View(doctorModel);
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult Edit(int? UserID, [Bind] DoctorModel doctorModel)
         {
             if (UserID != doctorModel.UserID)

@@ -9,10 +9,11 @@
         <h3 class="header">Welcome to Health Care Hospital</h3>
    
     </div>
+    <br />
     <div class="Plinks">
-        <a asp-area="" asp-controller="Doctor" asp-action="AddDoctor">AddDoctor</a>
+        <button class="btn btn-primary" onclick="location.href='@Url.Action("AddDoctor", "Doctor")'" >Profile</button>
 
-        <a asp-area="" asp-controller="Doctor" asp-action="Details">Details</a>
+        <button class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Doctor")'" >Details</button>
 
     </div>
 
